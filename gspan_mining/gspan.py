@@ -333,7 +333,7 @@ class gSpan(object):
         print('\nSupport: {}'.format(self._support))
 
         # Add some report info to pandas dataframe "self._report_df".
-        self._report_df = self._report_df.append(
+        self._report_df = pd.concat([self._report_df,
             pd.DataFrame(
                 {
                     'support': [self._support],
@@ -341,7 +341,7 @@ class gSpan(object):
                     'num_vert': self._DFScode.get_num_vertices()
                 },
                 index=[int(repr(self._counter)[6:-1])]
-            )
+            )]
         )
         if self._visualize:
             g.plot()
